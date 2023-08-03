@@ -23,12 +23,12 @@ jobs:
               if: always()
               with:
                   name: report
-                  path: reports/**
+                  path: cypress/reports/**
                   retention-days: 30
             - name: Publish HTML report
               if: ${{github.ref == 'refs/heads/master' && success() || failure() }}
               uses: peaceiris/actions-gh-pages@v3.7.3
               with:
-                  github_token: ${{ secrets.DEPLOY_TOKEN }}
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
                   publish_branch: report
-                  publish_dir: ./reports/html
+                  publish_dir: ./cypress/reports/html
