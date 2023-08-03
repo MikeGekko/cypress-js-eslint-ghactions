@@ -7,19 +7,17 @@
 // commands please read more here:
 // https://on.cypress.io/custom-commands
 // ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('jsScrollIntoView', {prevSubject: 'element'}, (element, options = {index: 0}) => {
+    cy.wrap(element).then(($selector) => {
+        $selector[options.index].scrollIntoView({scrollIntoViewOptions: {block: 'end', inline: 'nearest'}});
+    });
+});
+
+Cypress.Commands.add('button', (button, options = {force: false}) => {
+    cy.get('button').contains(button).first().jsScrollIntoView().should('be.visible').click({force: options.force});
+});
+
+Cypress.Commands.add('waitTIllPageIsLoad', () => {
+    cy.get('[class="syos-loader__message"]');
+});
