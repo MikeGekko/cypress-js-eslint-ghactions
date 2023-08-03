@@ -8,6 +8,12 @@
 // https://on.cypress.io/custom-commands
 // ***********************************************
 
+import addContext from 'mochawesome/addContext';
+
+Cypress.Commands.add('addContext', (context) => {
+  cy.once('test:after:run', (test) => addContext({ test }, context));
+});
+
 Cypress.Commands.add('jsScrollIntoView', {prevSubject: 'element'}, (element, options = {index: 0}) => {
     cy.wrap(element).then(($selector) => {
         $selector[options.index].scrollIntoView({scrollIntoViewOptions: {block: 'end', inline: 'nearest'}});

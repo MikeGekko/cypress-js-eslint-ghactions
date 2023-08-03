@@ -20,15 +20,15 @@ describe('Buy tickets', () => {
         });
 
         it('Then I display unavailable two seats zones', () => {
-            cy.log('unavailableTwoSeats:').then(() => result.unavailableTwoSeats.forEach((item) => cy.log(item)));
+            cy.addContext('unavailableTwoSeats:').then(() => result.unavailableTwoSeats.forEach((item) => cy.addContext(item)));
         });
 
         it('Then I display available zones', () => {
-            cy.log('available:').then(() => result.available.forEach((item) => cy.log(item)));
+            cy.addContext('available:').then(() => result.available.forEach((item) => cy.addContext(item)));
         });
 
         it('Then I display unavailable zones', () => {
-          cy.log('unavailable:').then(() => result.unavailable.forEach((item) => cy.log(item)));
+          cy.addContext('unavailable:').then(() => result.unavailable.forEach((item) => cy.addContext(item)));
       });
     });
 
