@@ -1,6 +1,10 @@
 # cypress-js-eslint-ghactions
 cypress-js-eslint-ghactions
 
+# HTML Reporter
+
+https://mikegekko.github.io/cypress-js-eslint-ghactions/
+
 # Setup
 ## Pre-install
 
