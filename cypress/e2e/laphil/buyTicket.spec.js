@@ -40,7 +40,7 @@ describe('Buy tickets', () => {
             ticketsPage.elements.zones().should('be.visible');
         });
 
-        it('Then I validate 2 tickets selected', () => {
+        it('Then I change tickets value', () => {
             ticketsPage.elements.tickets_value().should('have.value', 2);
             ticketsPage.changeTicketsValue('decrease');
             ticketsPage.elements.tickets_value().should('have.value', 1);
