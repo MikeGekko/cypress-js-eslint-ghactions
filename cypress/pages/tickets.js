@@ -19,7 +19,13 @@ const navigatePage = (link = '/en/syos2/package/1183') => {
 
 const sortZones = () => {
     const unavailableTwoSeats = [],
-        available = [];
+        available = [],
+        unavailable = [];
+    elements.unavailable_zones().then(($elements) => {
+        Object.values($elements).forEach((element) => {
+            unavailable.push(element.id);
+        });
+    });
     elements.available_zones().then(($elements) => {
         for (let i = 0; i < $elements.length; i++) {
             elements
@@ -43,17 +49,7 @@ const sortZones = () => {
             });
         }
     });
-    return {unavailableTwoSeats, available};
-};
-
-const getUnavailableZones = () => {
-    const unavailable = [];
-    elements.unavailable_zones().then(($elements) => {
-        Object.values($elements).forEach((element) => {
-            unavailable.push(element.id);
-        });
-    });
-    return unavailable;
+    return {unavailableTwoSeats, available, unavailable};
 };
 
 const selectRightListZone = (zone) => {
@@ -86,7 +82,6 @@ export default {
     elements,
     navigatePage,
     sortZones,
-    getUnavailableZones,
     selectRightListZone,
     changeTicketsValue,
     collectTotalData,

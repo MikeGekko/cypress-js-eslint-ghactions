@@ -16,7 +16,6 @@ describe('Buy tickets', () => {
 
         it('When I sort zones', () => {
             result = ticketsPage.sortZones();
-            result.unavailable = ticketsPage.getUnavailableZones()
         });
 
         it('Then I display unavailable two seats zones', () => {
